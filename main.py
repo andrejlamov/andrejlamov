@@ -29,13 +29,13 @@ with open(cv_json, "r") as f:
 
         sp.run(gitcmd("checkout", "master"), env=env)
 
-        if date and msg and branch and merge:
+        if msg and branch and merge:
             sp.run(gitcmd("checkout", merge), env=env)
             sp.run(gitcmd("merge", branch, "--no-ff", "-m", msg), env=env)
-        elif date and msg and branch:
-            sp.run(gitcmd("checkout", "-b", branch), env=env)
+        elif msg and branch:
+            sp.run(gitcmd("branch", branch), env=env)
+            sp.run(gitcmd("checkout", branch), env=env)
             sp.run(gitcmd("commit", "--allow-empty", "-m", msg), env=env)
-        elif date and msg:
-            sp.run(gitcmd("checkout", "master"), env=env)
+        elif msg:
             sp.run(gitcmd("commit", "--allow-empty", "-m", msg), env=env)
 

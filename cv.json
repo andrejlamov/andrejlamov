@@ -12,7 +12,7 @@
     {"date": "Sun Jan 1 30 12:00:00 2014", "message": "End working at Antikvariat PAN parttime", "branch": "pan","merge": "master"},
     {"date": "Sun Jan 1 30 12:00:00 2015", "message": "End working at Ericsson", "branch": "ericsson", "merge": "master"},
     {"date": "Sun Jan 1 30 12:00:00 2015", "message": "Begin master thesis", "branch": "chalmers"},
-    {"date": "Sun Jan 1 30 12:00:00 2016", "message": "Finish master thesis", "branch": "chalmers"},
+    {"date": "Sun Jan 1 30 12:00:00 2016", "message": "Finish master thesis", "branch": "chalmers", "merge": "master"},
     {"date": "Sun Jan 1 30 12:00:00 2016", "message": "Start working at Seal", "branch": "seal"},
     {"date": "Sun Jan 1 30 12:00:00 2016", "message": "Finish working at Seal", "branch": "seal", "merge": "master"},
     {"date": "Sun Jan 1 30 12:00:00 2020", "message": "Start working at Astra Zeneca", "branch": "az"}
