@@ -1,3 +1,3 @@
 ```
-python3 cv.json
+python3 main.py
 ```
