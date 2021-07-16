@@ -14,7 +14,7 @@
     {"date": "Sun Jan 1 30 12:00:00 2015", "message": "Begin master thesis", "branch": "chalmers"},
     {"date": "Sun Jan 1 30 12:00:00 2016", "message": "Finish master thesis", "branch": "chalmers", "merge": "master"},
     {"date": "Sun Jan 1 30 12:00:00 2016", "message": "Start working at Seal", "branch": "seal"},
-    {"date": "Sun Jan 1 30 12:00:00 2016", "message": "Finish working at Seal", "branch": "seal", "merge": "master"},
-    {"date": "Sun Jan 1 30 12:00:00 2020", "message": "Start working at Astra Zeneca", "branch": "az"}
+    {"date": "Fri Jul 4 30 12:00:00 2020", "message": "Finish working at Seal", "branch": "seal", "merge": "master"},
+    {"date": "Tue Sep 1 30 12:00:00 2020", "message": "Start working at Astra Zeneca", "branch": "az"}
   ]
 }
