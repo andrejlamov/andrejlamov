@@ -4,7 +4,7 @@
   "cv": [
     {"date": "Sun Sep 30 12:00:00 1988", "message": "Born"},
     {"date": "Sun Jan 1 12:00:00 1992", "message": "Move to Sweden"},
-    {"date": "Sun Jan 1 30 12:00:00 2004", "message": "Start highschool", "branch": "highscool"},
+    {"date": "Sun Jan 1 30 12:00:00 2004", "message": "Start highschool", "branch": "highschool"},
     {"date": "Sun Jan 1 30 12:00:00 2007", "message": "Finish highschool", "branch": "highschool", "merge": "master"},
     {"date": "Sun Jan 1 30 12:00:00 2008", "message": "Start Chalmers", "branch": "chalmers"},
     {"date": "Sun Jan 1 30 12:00:00 2008", "message": "Start working at Antikvariat PAN parttime", "branch": "pan"},
