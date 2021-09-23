@@ -37,15 +37,15 @@ if __name__ == "__main__":
                     "GIT_AUTHOR_DATE": date
             }
             
-            gitcmdenv = lambda *args, **kwargs: gitcmd(*args, **{**{"env": env}, **kwargs})
+            gitcmd2 = lambda *args, **kwargs: gitcmd(*args, **{**{"env": env}, **kwargs})
 
             if msg and branch and merge:
-                gitcmdenv("checkout", merge)
-                gitcmdenv("merge", branch, "--no-ff", "-m", msg)
+                gitcmd2("checkout", merge)
+                gitcmd2("merge", branch, "--no-ff", "-m", msg)
             elif msg and branch:
-                gitcmdenv("branch", branch)
-                gitcmdenv("checkout", branch)
-                gitcmdenv("commit", "--allow-empty", "-m", msg)
+                gitcmd2("branch", branch)
+                gitcmd2("checkout", branch)
+                gitcmd2("commit", "--allow-empty", "-m", msg)
             elif msg:
-                gitcmdenv("commit", "--allow-empty", "-m", msg)
+                gitcmd2("commit", "--allow-empty", "-m", msg)
 
