@@ -6,19 +6,25 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="git cv")
     parser.add_argument("--cv", help="cv json", required=True)
     parser.add_argument("--out", help="output folder for the generated git repo", required=True)
+    parser.add_argument("--verbose", help="log everything", action="store_true")
+
     conf = parser.parse_args()
 
-    def gitcmd(*args):
+    run_flags = {} if conf.verbose else {"stderr": sp.DEVNULL, "stdout": sp.DEVNULL}
+
+    def gitcmd(*args, **kwargs):
         c =  ["git", "-C", conf.out] + list(args)
-        print(f"*** {' '.join(c)}")
+        sp.run(c, **run_flags, **kwargs)
+        if conf.verbose:
+            print(f"*** {' '.join(c)}")
         return c
 
     with open(conf.cv, "r") as f:
         data = json.loads(f.read())
         sp.run(["rm", "-rf", conf.out])
-        sp.run(["git", "init", conf.out])
-        sp.run(gitcmd("config", "--local", "user.email", data.get("email")))
-        sp.run(gitcmd("config", "--local", "user.name", data.get("name")))
+        sp.run(["git", "init", conf.out], **run_flags)
+        gitcmd("config", "--local", "user.email", data.get("email"))
+        gitcmd("config", "--local", "user.name", data.get("name"))
 
         for d in data.get("cv"):
             date = d.get("date")
@@ -30,16 +36,16 @@ if __name__ == "__main__":
                     "GIT_COMMITTER_DATE": date,
                     "GIT_AUTHOR_DATE": date
             }
-
-            sp.run(gitcmd("checkout", "master"), env=env)
+            
+            gitcmdenv = lambda *args, **kwargs: gitcmd(*args, **{**{"env": env}, **kwargs})
 
             if msg and branch and merge:
-                sp.run(gitcmd("checkout", merge), env=env)
-                sp.run(gitcmd("merge", branch, "--no-ff", "-m", msg), env=env)
+                gitcmdenv("checkout", merge, env=env)
+                gitcmdenv("merge", branch, "--no-ff", "-m", msg)
             elif msg and branch:
-                sp.run(gitcmd("branch", branch), env=env)
-                sp.run(gitcmd("checkout", branch), env=env)
-                sp.run(gitcmd("commit", "--allow-empty", "-m", msg), env=env)
+                gitcmdenv("branch", branch, env=env)
+                gitcmdenv("checkout", branch, env=env)
+                gitcmdenv("commit", "--allow-empty", "-m", msg)
             elif msg:
-                sp.run(gitcmd("commit", "--allow-empty", "-m", msg), env=env)
+                gitcmdenv("commit", "--allow-empty", "-m", msg)
 
