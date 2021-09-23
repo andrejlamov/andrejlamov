@@ -40,11 +40,11 @@ if __name__ == "__main__":
             gitcmdenv = lambda *args, **kwargs: gitcmd(*args, **{**{"env": env}, **kwargs})
 
             if msg and branch and merge:
-                gitcmdenv("checkout", merge, env=env)
+                gitcmdenv("checkout", merge)
                 gitcmdenv("merge", branch, "--no-ff", "-m", msg)
             elif msg and branch:
-                gitcmdenv("branch", branch, env=env)
-                gitcmdenv("checkout", branch, env=env)
+                gitcmdenv("branch", branch)
+                gitcmdenv("checkout", branch)
                 gitcmdenv("commit", "--allow-empty", "-m", msg)
             elif msg:
                 gitcmdenv("commit", "--allow-empty", "-m", msg)
